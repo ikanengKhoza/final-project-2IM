@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "title": "Never Gonna Give You Up",
+    "image": "https://cdn.pixabay.com/photo/2022/06/26/04/27/landscape-7284515_960_720.jpg",
+    "rating": 230
+  },
+  {
+    "id": 2,
+    "title": "The Coding Train",
+    "image": "https://cdn.pixabay.com/photo/2022/06/21/21/56/konigssee-7276585__480.jpg",
+    "rating": 231
+  },
+  {
+    "id": 3,
+    "title": "Mac & Cheese | Basics with Babish",
+    "image": "https://cdn.pixabay.com/photo/2022/06/29/15/36/grain-7292019__340.jpg",
+    "rating": 211
+  }
+  
+]

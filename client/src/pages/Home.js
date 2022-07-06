@@ -1,44 +1,81 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import "../App.css";
+import data from "../data.json";
+import Search from "../components/Search.jsx";
+//import { FaThumbsUp, FaThumbsDown, FaTrashAlt } from "react-icons/fa";
+//import { IconContext } from "react-icons";
+import ButtonUpload from "../components/ButtonUpload.jsx";
+import ButtonSearchImage from "../components/ButtonSearchImg.jsx";
+import ButtonSearchLogo from "../components/ButtonSearchLogo.jsx";
+import ButtonSearchIcon from "../components/ButtonSearchIcon.jsx";
+import logo from "./cyf_logo.png";
 
-import "./Home.css";
-import logo from "./logo.svg";
+export default function App() {
+	const [searchTerm, setSearchTerm] = useState("");
+	const [images, setImages] = useState(data);
 
-export function Home() {
-	const [message, setMessage] = useState("Loading...");
+	//______________________search____________________
+	function handleSearch(event) {
+		setSearchTerm(event.target.value);
 
-	useEffect(() => {
-		fetch("/api")
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error(res.statusText);
-				}
-				return res.json();
-			})
-			.then((body) => {
-				setMessage(body.message);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
-	}, []);
+	}
 
 	return (
-		<main role="main">
-			<div>
-				<img
-					className="logo"
-					data-qa="logo"
-					src={logo}
-					alt="Just the React logo"
-				/>
-				<h1 className="message" data-qa="message">
-					{message}
-				</h1>
-				<Link to="/about/this/site">About</Link>
+		<div>
+			<div className="App">
+				<header className="header-wrapper mt-3">
+					<img className="logo-img" src={logo} alt="logo" width={"150px"} />
+					<ButtonUpload />
+				</header>
+
+				<div className="content-wrapper">
+					<div className="container">
+						<div className="col">
+							<div className="col-md-12 search-wrapper ">
+								<div className="row">
+									<div className="col-md-8">
+										<Search
+											searchTerm={searchTerm}
+											handleSearch={handleSearch}
+										/>
+									</div>
+									<div className="col">
+										<ButtonSearchImage />
+									</div>
+									<div className="col">
+										<ButtonSearchLogo />
+									</div>
+									<div className="col">
+										<ButtonSearchIcon />
+									</div>
+								</div>
+							</div>
+
+							<div className="col-md mt-3 ">
+								{images.length > 0 &&
+									images
+										.filter(({ title }) =>
+											title.toLowerCase().includes(searchTerm.toLowerCase())
+										)
+										.map((img) => {
+											return (
+												<div className="card pt-4 mb-3 " key={img.id}>
+													<h3 className="video-title">{img.title}</h3>
+													<br />
+													<img
+														className="logo-img"
+														src={img.image}
+														alt="logo"
+														width={"150px"}
+													/>
+												</div>
+											);
+										})}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-		</main>
+		</div>
 	);
 }
-
-export default Home;
