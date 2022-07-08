@@ -36,6 +36,7 @@ export function Home() {
 					{message}
 				</h1>
 				<Link to="/about/this/site">About</Link>
+				<Link to="/api/upload" className="btn btn-success">Upload</Link>
 			</div>
 		</main>
 	);
