@@ -1,0 +1,87 @@
+:root {
+  --blue-sky: rgb(255, 255, 255);
+  --blue-light: rgb(255, 255, 255);
+  --blue-mid: #183153;
+  --green: #16792c;
+  --red-dark: darkred;
+}
+
+*:focus {
+  outline: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.header-wrapper {
+  text-align: center;
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.header-title {
+  font-weight: 300;
+  font-size: 1.8rem;
+  letter-spacing: 0.8px;
+}
+
+.content-wrapper {
+  background-color: var(--blue-light);
+  justify-items: center;
+}
+
+.search-wrapper {
+  height: 25vh;
+}
+
+.search-title {
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-block: 10px 30px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.search-input {
+  width: 91%;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 transparent;
+}
+
+.search-icon {
+  padding-right: 8px;
+  color: var(--blue-mid);
+}
+
+.btn-upload {
+  background-color: var(--green);
+  color: white;
+}
+
+.btn-search {
+  background-color: var(--blue-mid);
+  color: white;
+}
+
+.card {
+  border: 0;
+}
+
+.img-title {
+  font-size: 1.2em;
+  font-weight: 300;
+  text-align:left;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 transparent;
+}

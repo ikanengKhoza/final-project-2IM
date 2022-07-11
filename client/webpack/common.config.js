@@ -5,7 +5,7 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
 					loader: "babel-loader",
@@ -29,7 +29,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			favicon: "./client/src/favicon.ico",
+			favicon: "./client/src/cyf_favicon.png",
 			template: "./client/src/index.html",
 		}),
 	],
