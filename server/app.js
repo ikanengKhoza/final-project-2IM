@@ -1,6 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
+const cors = require("cors");
+
 
 import router from "./api";
 import {
@@ -14,6 +16,8 @@ const apiRoot = "/api";
 const staticDir = path.join(__dirname, "static");
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 app.use(configuredHelmet());
