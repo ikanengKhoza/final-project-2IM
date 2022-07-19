@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function ButtonUpload() {
   return (
     <div>
-      <button className="btn btn-success col-sm-12 mt-3 mb-5 " type="submit">
-        Upload
-      </button>
+      <Link to="upload"className="btn btn-info">Upload</Link>
     </div>
   );
 }

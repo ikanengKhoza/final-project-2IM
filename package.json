@@ -69,6 +69,7 @@
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.129.0",
 		"@babel/runtime": "^7.17.0",
+		"aws-sdk": "^2.1177.0",
 		"axios": "^0.27.2",
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.1",

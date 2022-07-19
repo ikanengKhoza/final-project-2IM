@@ -13,12 +13,10 @@ export default function App() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [images, setImages] = useState(data);
 
-
 	//______________________search____________________
 	function handleSearch(event) {
 		setSearchTerm(event.target.value);
 		console.log(setImages);
-
 	}
 
 	return (
@@ -26,7 +24,6 @@ export default function App() {
 			<div className="App">
 				<header className="header-wrapper mt-3">
 					<img className="logo-img" src={logo} alt="logo" width={"150px"} />
-					<h1 className="header-title"></h1>
 					<ButtonUpload />
 				</header>
 
@@ -56,15 +53,15 @@ export default function App() {
 							<div className="col-md mt-3 ">
 								<div className="container">
 									<div className="row">
-									{images.length > 0 &&
-										images
-											.filter(({ title }) =>
-												title.toLowerCase().includes(searchTerm.toLowerCase())
-											)
-											.map((img) => {
-												return (
-												<div className="col" key={img.id}>
-													<div className="card pt-4 mb-3 " >
+										{images.length > 0 &&
+											images
+												.filter(({ title }) =>
+													title.toLowerCase().includes(searchTerm.toLowerCase())
+												)
+												.map((img) => {
+													return (
+														<div className="col" key={img.id}>
+															<div className="card pt-4 mb-3 ">
 																<h3 className="img-title">{img.title}</h3>
 																<br />
 																<img
@@ -73,13 +70,12 @@ export default function App() {
 																	alt="logo"
 																	width={"150px"}
 																/>
-													</div>
-												</div>
-
-												);
-											})}
-								    </div>
-							    </div>
+															</div>
+														</div>
+													);
+												})}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

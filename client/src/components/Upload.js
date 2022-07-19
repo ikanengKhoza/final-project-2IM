@@ -1,20 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 
-import "./App.css";
-
-async function postImage({ image, description }) {
+async function postImage({ file, description }) {
 	const formData = new FormData();
-	formData.append("image", image);
+	formData.append("file", file);
 	formData.append("description", description);
 
-	const result = await axios.post("/images", formData, {
+	const result = fetch("/api/upload",  {
+		method: "post",
+		body: formData,
 		headers: { "Content-Type": "multipart/form-data" },
 	});
 	return result.data;
 }
 
-function App() {
+function Upload() {
 	const [file, setFile] = useState();
 	const [description, setDescription] = useState("");
 	const [images, setImages] = useState([]);
@@ -31,26 +31,23 @@ function App() {
 	};
 
 	return (
-		<div className="App">
+		<div className="Upload">
 			<form onSubmit={submit}>
-				<input onChange={fileSelected} type="file" accept="image/*"></input>
+				<input onChange={fileSelected} type="file" accept="upload" />
 				<input
 					value={description}
 					onChange={(e) => setDescription(e.target.value)}
 					type="text"
-				></input>
+				/>
 				<button type="submit">Submit</button>
 			</form>
 
 			{images.map((image) => (
 				<div key={image}>
-					<img src={ image }></img>
 				</div>
 			))}
-
-			<img src="/images/9fa06d3c5da7aec7f932beb5b3e60f1d"></img>
 		</div>
 	);
 }
 
-export default App;
+export default Upload;
