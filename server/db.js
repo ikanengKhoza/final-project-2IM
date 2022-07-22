@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 
-//const dbUrl = process.env.DATABASE_URL || "postgres://localhost:5432/cyf";
+// const dbUrl = process.env.DATABASE_URL || "postgres://localhost:5432/cyf";
 
 // const pool = new Pool({
 // 	connectionString: dbUrl,
@@ -9,11 +9,10 @@ import { Pool } from "pg";
 // });
 
 const pool = new Pool({
-	user: "ika",
-	host: "localhost",
-	database: "final",
-	password: "amos1982",
-	port: 5432,
+		host: "....",
+		user: "'''",
+		password: "'''''",
+		database: "''''",
 });
 
 

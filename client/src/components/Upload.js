@@ -1,53 +1,43 @@
 import { useState } from "react";
-//import axios from "axios";
 
-async function postImage({ file, description }) {
-	const formData = new FormData();
-	formData.append("file", file);
-	formData.append("description", description);
 
-	const result = fetch("/api/upload",  {
-		method: "post",
-		body: formData,
-		headers: { "Content-Type": "multipart/form-data" },
-	});
-	return result.data;
-}
 
 function Upload() {
-	const [file, setFile] = useState();
-	const [description, setDescription] = useState("");
-	const [images, setImages] = useState([]);
+	const [fileData, setFileData] = useState();
 
-	const submit = async (event) => {
-		event.preventDefault();
-		const result = await postImage({ image: file, description });
-		setImages([result.image, ...images]);
-	};
+  const fileChangeHandler = (e) => {
+    setFileData(e.target.files[0]);
+  };
 
-	const fileSelected = (event) => {
-		const file = event.target.files[0];
-		setFile(file);
-	};
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
 
-	return (
-		<div className="Upload">
-			<form onSubmit={submit}>
-				<input onChange={fileSelected} type="file" accept="upload" />
-				<input
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
-					type="text"
-				/>
-				<button type="submit">Submit</button>
-			</form>
+    const data = new FormData();
 
-			{images.map((image) => (
-				<div key={image}>
-				</div>
-			))}
-		</div>
-	);
+    data.append("image", fileData);
+
+    fetch("http://localhost:3000/api/upload", {
+      method: "POST",
+      body: data,
+    })
+      .then(() => {
+        console.log("File Sent Successful");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  return (
+    <div className="upload">
+      <form onSubmit={onSubmitHandler}>
+        <label className="upload-select">Select
+        <input type="file" onChange={fileChangeHandler} />
+        </label>
+        <button type="submit" className="btn btn-success">Upload</button>
+      </form>
+    </div>
+  );
 }
 
 export default Upload;
