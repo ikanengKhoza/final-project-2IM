@@ -43,25 +43,35 @@ router.post("/upload", upload.single("image"), (req, res) => {
     console.log(req.file);
 	const { filename, mimetype, size } = req.file;
     const filepath = req.file.path;
-	pool
-        .insert({
-            filename,
-            filepath,
-            mimetype,
-            size,
-        })
-        .into("image_files")
-        .then(() => res.json({ success: true, filename }))
-        .catch((err) => res
-                          .json(
-                              {
-                                  success: false,
-                                  message: "cannot upload",
-                                  stack: err.stack,
-                              }
-                          )
-        );
+
+    const query = "INSERT INTO image_files(filename, mimetype, size, filepath) VALUES ($1, $2, $3, $4)";
+    pool.query(query, [filename, mimetype, size, filepath])
+    .then(() => res.send("image created"))
+    .catch((error) => {
+     console.log(error);
+     res.status(500).json(error);
+    });
+
 });
+// 	pool
+//         .insert({
+//             filename,
+//             filepath,
+//             mimetype,
+//             size,
+//         })
+//         .into("image_files")
+//         .then(() => res.json({ success: true, filename }))
+//         .catch((err) => res
+//                           .json(
+//                               {
+//                                   success: false,
+//                                   message: "cannot upload",
+//                                   stack: err.stack,
+//                               }
+//                           )
+//         );
+// });
 
 
 export default router;
