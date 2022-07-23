@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
+const session = require("express-session");
 
 import router from "./api";
 import {
@@ -18,6 +19,14 @@ const app = express();
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
+
+app.use(session({
+	secret: "something",
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: true },
+  }));
+
 
 if (app.get("env") === "production") {
 	app.enable("trust proxy");
