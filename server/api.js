@@ -9,6 +9,8 @@ const CLIENT_URL = "http://localhost:3000/auth/github/callback";
 
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
+
+
 passport.serializeUser((user, done) => {
 	done(null, user);
 });
@@ -35,7 +37,7 @@ router.get("/", (_, res) => {
 });
 
 router.get("/login", function (req, res) {
-	//how to redirect to login page...aaaaaaaaa
+	// res.redirect("")
 });
 
 router.get(
