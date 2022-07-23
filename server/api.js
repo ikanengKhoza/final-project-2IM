@@ -1,15 +1,14 @@
 import { Router } from "express";
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 const GithubStrategy = require("passport-github2").Strategy;
 const router = Router();
 
 const GITHUB_CLIENT_ID = "979bf3578c79fbc73e1e";
 
-const CLIENT_URL = "http://localhost:3000/auth/github/callback";
+const CLIENT_URL = "http://localhost:3000/api/auth/github/callback";
 
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-
-
 
 passport.serializeUser((user, done) => {
 	done(null, user);
@@ -32,12 +31,18 @@ passport.use(
 	)
 );
 
+router.use(
+	cookieSession({
+		name: "session",
+		keys: ["someone"],
+	})
+);
+
+router.use(passport.initialize());
+router.use(passport.session());
+
 router.get("/", (_, res) => {
 	res.json({ message: "world" });
-});
-
-router.get("/login", function (req, res) {
-	// res.redirect("")
 });
 
 router.get(
@@ -56,5 +61,10 @@ router.get(
 		res.redirect("/");
 	}
 );
+
+router.get("/auth/github/authenticationstatus", (req, res) => {
+	// res.send(req.isAuthenticated());
+	res.json({ isauthenticated:req.isAuthenticated() });
+});
 
 export default router;
