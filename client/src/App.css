@@ -2,25 +2,34 @@
   --blue-sky: rgb(255, 255, 255);
   --blue-light: rgb(255, 255, 255);
   --blue-mid: #183153;
+  --black: black;
   --green: #16792c;
   --red-dark: darkred;
 }
 
 *:focus {
-  outline: 0;
+  outline: none;
 }
+
 
 .App {
   text-align: center;
 }
 
 .header-wrapper {
+  padding-top: 10px;
   text-align: center;
   height: 15vh;
   display: flex;
-  justify-content: space-around;
+  justify-content:space-around;
   align-items: baseline;
 }
+
+.header-buttons{
+  display: inline-grid;
+  justify-content:space-between;  
+}
+
 
 .header-title {
   font-weight: 300;
@@ -29,12 +38,16 @@
 }
 
 .content-wrapper {
-  background-color: var(--blue-light);
+  
   justify-items: center;
 }
 
 .search-wrapper {
-  height: 25vh;
+  
+  height: 30vh;
+  padding-block: 40px;
+ 
+  
 }
 
 .search-title {
@@ -51,6 +64,7 @@
 
 .search-input {
   width: 91%;
+
 }
 
 .input:focus {
@@ -58,8 +72,8 @@
 }
 
 .search-icon {
-  padding-right: 8px;
-  color: var(--blue-mid);
+  padding-right: 10px;
+  color: var(--black);
 }
 
 .btn-upload {
@@ -73,7 +87,7 @@
 }
 
 .card {
-  border: 0;
+  border: solid black 1px;
 }
 
 .img-title {
@@ -82,6 +96,16 @@
   text-align:left;
 }
 
+.card-text{
+  text-align:left;
+  font-weight: 300;
+}
+
 .btn:focus {
   box-shadow: 0 0 0 transparent;
+}
+
+.form-control{
+  border:solid black 1px;
+
 }

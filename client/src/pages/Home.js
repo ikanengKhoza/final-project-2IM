@@ -8,6 +8,7 @@ import ButtonSearchImage from "../components/ButtonSearchImg.jsx";
 import ButtonSearchLogo from "../components/ButtonSearchLogo.jsx";
 import ButtonSearchIcon from "../components/ButtonSearchIcon.jsx";
 import logo from "./cyf_logo.png";
+import Navbar from "../components/Navbar.jsx";
 
 export default function App() {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -24,11 +25,12 @@ export default function App() {
 	return (
 		<IconContext.Provider value={{ style: { fontSize: "35px" } }}>
 			<div className="App">
-				<header className="header-wrapper mt-3">
+				<Navbar />
+				{/* <header className="header-wrapper mt-3">
 					<img className="logo-img" src={logo} alt="logo" width={"150px"} />
 					<h1 className="header-title"></h1>
 					<ButtonUpload />
-				</header>
+				</header> */}
 
 				<div className="content-wrapper">
 					<div className="container">
@@ -41,14 +43,8 @@ export default function App() {
 											handleSearch={handleSearch}
 										/>
 									</div>
-									<div className="col">
-										<ButtonSearchImage />
-									</div>
-									<div className="col">
-										<ButtonSearchLogo />
-									</div>
-									<div className="col">
-										<ButtonSearchIcon />
+									<div className="col-md-2">
+										<ButtonUpload />
 									</div>
 								</div>
 							</div>
@@ -56,30 +52,34 @@ export default function App() {
 							<div className="col-md mt-3 ">
 								<div className="container">
 									<div className="row">
-									{images.length > 0 &&
-										images
-											.filter(({ title }) =>
-												title.toLowerCase().includes(searchTerm.toLowerCase())
-											)
-											.map((img) => {
-												return (
-												<div className="col" key={img.id}>
-													<div className="card pt-4 mb-3 " >
-																<h3 className="img-title">{img.title}</h3>
+										{images.length > 0 &&
+											images
+												.filter(({ title }) =>
+													title.toLowerCase().includes(searchTerm.toLowerCase())
+												)
+												.map((img) => {
+													return (
+														<div className="col" key={img.id}>
+															<div className="card pb-4 mt-4 mb-4">
 																<br />
 																<img
 																	className="logo-img"
 																	src={img.image}
 																	alt="logo"
-																	width={"150px"}
+																	height={"180px"}
 																/>
-													</div>
-												</div>
-
-												);
-											})}
-								    </div>
-							    </div>
+																<div className="card-body">
+																	<h3 className="img-title">{img.title}</h3>
+																	<p className="card-text">
+																		Example text for description of the image
+																	</p>
+																</div>
+															</div>
+														</div>
+													);
+												})}
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
