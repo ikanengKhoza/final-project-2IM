@@ -41,6 +41,18 @@ router.get("/", (_, res) => {
 	res.json({ message: "world" });
 });
 
+router.get("/listImages", function(req, res) {
+    console.log("hi");
+    pool.query("SELECT * FROM image_files")
+        .then((result) => res.json(result.rows.map((element) => element.id)))
+        .catch((error) => {
+            console.error(error);
+            res.status(500).json(error);
+        });
+});
+
+
+
 router.post("/upload", upload.single("image"), (req, res) => {
 	//console.log(req.file);
 	const path = req.file.path;
