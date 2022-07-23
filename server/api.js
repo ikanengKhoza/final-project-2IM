@@ -31,7 +31,7 @@ passport.use(
 );
 
 router.get("/", (_, res) => {
-	res.json({ message: "Hello, world!" });
+	res.json({ message: "world" });
 });
 
 router.get("/login", function (req, res) {
