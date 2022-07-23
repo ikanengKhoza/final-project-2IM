@@ -4,10 +4,7 @@ import data from "../data.json";
 import Search from "../components/Search.jsx";
 import { IconContext } from "react-icons";
 import ButtonUpload from "../components/ButtonUpload.jsx";
-import ButtonSearchImage from "../components/ButtonSearchImg.jsx";
-import ButtonSearchLogo from "../components/ButtonSearchLogo.jsx";
-import ButtonSearchIcon from "../components/ButtonSearchIcon.jsx";
-import logo from "./cyf_logo.png";
+//import logo from "./cyf_logo.png";
 import Navbar from "../components/Navbar.jsx";
 
 export default function App() {
@@ -26,18 +23,13 @@ export default function App() {
 		<IconContext.Provider value={{ style: { fontSize: "35px" } }}>
 			<div className="App">
 				<Navbar />
-				{/* <header className="header-wrapper mt-3">
-					<img className="logo-img" src={logo} alt="logo" width={"150px"} />
-					<h1 className="header-title"></h1>
-					<ButtonUpload />
-				</header> */}
 
 				<div className="content-wrapper">
 					<div className="container">
 						<div className="col">
 							<div className="col-md-12 search-wrapper ">
-								<div className="row">
-									<div className="col-md-8">
+								<div className="row justify-content-md-center">
+									<div className="col-md-6">
 										<Search
 											searchTerm={searchTerm}
 											handleSearch={handleSearch}
