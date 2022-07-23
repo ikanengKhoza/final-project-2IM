@@ -6,11 +6,12 @@ const multer = require("multer");
 const path = require("path");
 const upload = multer({ dest: "uploads/" });
 
+
 router.get("/upload/:filename", (req, res) => {
 	const { filename } = req.params;
     pool
         .select("*")
-        .from("images")
+        .from("image_files")
         .where({ filename })
         .then((images) => {
             if (images[0]) {
@@ -39,6 +40,7 @@ router.get("/upload/:filename", (req, res) => {
 });
 
 router.post("/upload", upload.single("image"), (req, res) => {
+    console.log(req.file);
 	const { filename, mimetype, size } = req.file;
     const filepath = req.file.path;
 	pool
@@ -48,7 +50,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
             mimetype,
             size,
         })
-        .into("images")
+        .into("image_files")
         .then(() => res.json({ success: true, filename }))
         .catch((err) => res
                           .json(

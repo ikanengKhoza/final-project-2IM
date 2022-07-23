@@ -9,10 +9,10 @@ import { Pool } from "pg";
 // });
 
 const pool = new Pool({
-		host: "....",
-		user: "'''",
-		password: "'''''",
-		database: "''''",
+		host: "localhost",
+		user: "ika",
+		password: "amos1982",
+		database: "image_upload",
 });
 
 
