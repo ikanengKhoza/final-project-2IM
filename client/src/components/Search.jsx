@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../App.css";
 import { FaSearch } from "react-icons/fa";
 
+
 export default function Search(props) {
+const [showdropdown, setShowdropdown] = useState(false);
+
+function toggleDropdown(){
+	setShowdropdown(!showdropdown);
+}
+
   return (
 		<div className="container">
 			<div className="col-lg mt-3">
@@ -18,30 +25,26 @@ export default function Search(props) {
 							value={props.searchTerm}
 							onChange={(event) => props.handleSearch(event)}
 						/>
-						<div className="input-group-append">
+						<div className="btn-group dropdown">
 							<button
-								className="btn btn-outline-dark dropdown-toggle"
+								onClick={toggleDropdown}
+								className="btn btn-outline-dark dropdown-toggle btn-img"
 								type="button"
 								data-toggle="dropdown"
-								data-bs-toggle="dropdown"
 								aria-haspopup="true"
-								aria-expanded="true"
+								aria-expanded="false"
 							>
 								Images
 							</button>
-							<div className="dropdown-menu">
+							<div className={`dropdown-menu ${showdropdown ? "show" : " "}`}>
 								<a className="dropdown-item" href="#">
-									Action
+									photos
 								</a>
 								<a className="dropdown-item" href="#">
-									Another action
+									logos
 								</a>
 								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<div role="separator" className="dropdown-divider"></div>
-								<a className="dropdown-item" href="#">
-									Separated link
+									icons
 								</a>
 							</div>
 						</div>
@@ -52,3 +55,29 @@ export default function Search(props) {
 	);
 }
 
+
+/* 
+	<div className="input-group-append">
+		<button
+			onClick={toggleDropdown}
+			className="btn btn-outline-dark dropdown-toggle"
+			type="button"
+			data-toggle="dropdown"
+			data-bs-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false"
+		>
+			Images
+		</button>
+		<div className={`dropdown-menu ${showdropdown ? "show" : " "}`}>
+			<a className="dropdown-item" href="#">
+				photos
+			</a>
+			<a className="dropdown-item" href="#">
+				logos
+			</a>
+			<a className="dropdown-item" href="#">
+				icons
+			</a>
+		</div>
+	</div>; */

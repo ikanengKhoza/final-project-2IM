@@ -17,7 +17,7 @@
 }
 
 .header-wrapper {
-  padding-top: 10px;
+  padding-top: 15px;
   text-align: center;
   height: 15vh;
   display: flex;
@@ -74,6 +74,12 @@
 .search-icon {
   padding-right: 10px;
   color: var(--black);
+}
+
+.btn-img{
+  border-left-color: white;
+ border-top-left-radius: 0;
+ border-bottom-left-radius: 0;
 }
 
 .btn-upload {
