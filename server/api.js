@@ -5,16 +5,15 @@ const fs = require("fs");
 import pool from "./db";
 
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 const GithubStrategy = require("passport-github2").Strategy;
 const router = Router();
 
 const GITHUB_CLIENT_ID = "979bf3578c79fbc73e1e";
 
-const CLIENT_URL = "http://localhost:3000/auth/github/callback";
+const CLIENT_URL = "http://localhost:3000/api/auth/github/callback";
 
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
-
-
 
 passport.serializeUser((user, done) => {
 	done(null, user);
@@ -37,9 +36,20 @@ passport.use(
 	)
 );
 
+router.use(
+	cookieSession({
+		name: "session",
+		keys: ["someone"],
+	})
+);
+
+router.use(passport.initialize());
+router.use(passport.session());
+
 router.get("/", (_, res) => {
 	res.json({ message: "world" });
 });
+
 
 router.get("/listImages", function(req, res) {
     console.log("hi");
@@ -84,6 +94,7 @@ router.get("/login", function (req, res) {
 	// res.redirect("")
 });
 
+
 router.get(
 	"/auth/github",
 	passport.authenticate("github", { scope: ["user:email", "read:org"] })
@@ -93,12 +104,14 @@ router.get(
 	"/auth/github/callback",
 	passport.authenticate("github", { failureRedirect: "/login" }),
 	function (req, res) {
-		// Successful authentication, redirect home.
-		//find if user is cyf membre....filter by id if not => res.redirect('/some other page');
 		console.log(req.user);
-		//redirectioong to 3000 root   i can use http://5000/
 		res.redirect("/");
 	}
 );
+
+router.get("/auth/github/authenticationstatus", (req, res) => {
+
+	res.json({ isauthenticated:req.isAuthenticated() });
+});
 
 export default router;
