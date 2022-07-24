@@ -90,9 +90,9 @@ router.post("/upload", upload.single("image"), (req, res) => {
     }
 });
 
-router.get("/login", function (req, res) {
-	// res.redirect("")
-});
+// router.get("/login", function (req, res) {
+// 	// res.redirect("")
+// });
 
 
 router.get(
