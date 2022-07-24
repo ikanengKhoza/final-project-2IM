@@ -3,7 +3,8 @@ import "../App.css";
 import data from "../data.json";
 import Search from "../components/Search.jsx";
 import { IconContext } from "react-icons";
-import ButtonUpload from "../components/ButtonUpload.jsx";
+import { Link } from "react";
+import Upload from "../components/Upload.jsx";
 import ButtonSearchImage from "../components/ButtonSearchImg.jsx";
 import ButtonSearchLogo from "../components/ButtonSearchLogo.jsx";
 import ButtonSearchIcon from "../components/ButtonSearchIcon.jsx";
@@ -44,7 +45,7 @@ export default function App() {
 										/>
 									</div>
 									<div className="col-md-2">
-										<ButtonUpload />
+										<Upload />
 									</div>
 								</div>
 							</div>
