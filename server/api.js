@@ -50,50 +50,64 @@ router.get("/", (_, res) => {
 	res.json({ message: "world" });
 });
 
-
-router.get("/listImages", function(req, res) {
-    console.log("hi");
-    pool.query("SELECT * FROM image_files")
-        .then((result) => res.json(result.rows.map((element) => element.id)))
-        .catch((error) => {
-            console.error(error);
-            res.status(500).json(error);
-        });
+router.get("/image/:imageId", function (req, res) {
+	const imageId = req.params.imageId;
+	console.log(imageId);
+	pool
+		.query("SELECT * FROM image_files WHERE id=$1", [imageId])
+		.then((result) => {
+			let data = result.rows[0].file;
+			let img = Buffer.from(data, "base64");
+			res.writeHead(200, {
+				"Content-Type": result.rows[0].mimetype,
+				"Content-Length": img.length,
+			});
+			res.end(img);
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).json(error);
+		});
 });
 
-
+router.get("/listImages", function (req, res) {
+	console.log("hi");
+	pool
+		.query("SELECT * FROM image_files")
+		.then((result) => res.json(result.rows.map((element) => element.id)))
+		.catch((error) => {
+			console.error(error);
+			res.status(500).json(error);
+		});
+});
 
 router.post("/upload", upload.single("image"), (req, res) => {
 	//console.log(req.file);
 	const path = req.file.path;
-    const filename = req.file.filename;
-    const mimetype = req.file.mimetype;
-    const size = req.file.size;
-
+	const filename = req.file.filename;
+	const mimetype = req.file.mimetype;
+	const size = req.file.size;
 
 	try {
 		const data = fs.readFileSync(path, { encoding: "base64" });
 		console.log(data);
-        const query = "INSERT INTO image_files(filename, mimetype, size, file) VALUES ($1, $2, $3, $4)";
-        pool.query(query, [filename, mimetype, size, data])
-        .then(() => res.send("image created"))
-        .catch((error) => {
-         console.log(error);
-         res.status(500).json(error);
-
-        });
-
+		const query =
+			"INSERT INTO image_files(filename, mimetype, size, file) VALUES ($1, $2, $3, $4)";
+		pool
+			.query(query, [filename, mimetype, size, data])
+			.then(() => res.send("image created"))
+			.catch((error) => {
+				console.log(error);
+				res.status(500).json(error);
+			});
 	} catch (err) {
 		console.error(err);
-
-
-    }
+	}
 });
 
 // router.get("/login", function (req, res) {
 // 	// res.redirect("")
 // });
-
 
 router.get(
 	"/auth/github",
@@ -110,8 +124,7 @@ router.get(
 );
 
 router.get("/auth/github/authenticationstatus", (req, res) => {
-
-	res.json({ isauthenticated:req.isAuthenticated() });
+	res.json({ isauthenticated: req.isAuthenticated() });
 });
 
 export default router;
