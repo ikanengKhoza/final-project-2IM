@@ -104,16 +104,13 @@ router.get(
 	"/auth/github/callback",
 	passport.authenticate("github", { failureRedirect: "/login" }),
 	function (req, res) {
-		// Successful authentication, redirect home.
-		//find if user is cyf membre....filter by id if not => res.redirect('/some other page');
 		console.log(req.user);
-		//redirectioong to 3000 root   i can use http://5000/
 		res.redirect("/");
 	}
 );
 
 router.get("/auth/github/authenticationstatus", (req, res) => {
-	// res.send(req.isAuthenticated());
+
 	res.json({ isauthenticated:req.isAuthenticated() });
 });
 
