@@ -2,9 +2,6 @@ import express from "express";
 import morgan from "morgan";
 import path from "path";
 
-
-
-
 import router from "./api";
 import {
 	configuredHelmet,
@@ -23,11 +20,7 @@ app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
 
-
 app.use(cors());
-
-
-
 
 if (app.get("env") === "production") {
 	app.enable("trust proxy");
