@@ -35,7 +35,7 @@ function Upload() {
         <label className="upload-select">Select
         <input type="file" onChange={fileChangeHandler} />
         </label>
-        <button type="submit" className="btn btn-success">Upload</button>
+        <button type="submit" className="btn btn-info">Upload</button>
       </form>
     </div>
   );
