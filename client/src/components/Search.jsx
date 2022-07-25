@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Search(props) {
   return (
@@ -44,6 +45,7 @@ export default function Search(props) {
 									Separated link
 								</a>
 							</div>
+							<Link to="/upload"><button className="btn btn-dark">Upload</button></Link>
 						</div>
 					</div>
 				</div>

@@ -17,7 +17,7 @@ function Upload() {
 
     data.append("image", fileData);
 
-    fetch("http://localhost:3000/api/upload", {
+    fetch("https://twoiam.herokuapp.com/api/upload", {
       method: "POST",
       body: data,
     })
