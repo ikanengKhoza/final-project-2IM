@@ -44,9 +44,6 @@ export default function App() {
 											handleSearch={handleSearch}
 										/>
 									</div>
-									<div className="col-md-2">
-										<Upload />
-									</div>
 								</div>
 							</div>
 
