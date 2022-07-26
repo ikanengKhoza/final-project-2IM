@@ -1,19 +1,14 @@
-createdb twoiam 
-psql twoiam 
-
-drop table if exists users;
-drop table if exists images;
-
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  github_name VARCHAR(100) NOT NULL
+CREATE TABLE image_files(
+    id SERIAL NOT NULL PRIMARY KEY,
+    filename TEXT UNIQUE NOT NULL,
+    file TEXT NOT NULL,
+    mimetype  TEXT NOT NULL,
+    size INT NOT NULL
 );
 
-CREATE TABLE images (
-  id SERIAL PRIMARY KEY,
-  users_id INT REFERENCES users(id),
-  author VARCHAR(100) NOT NULL,
-  title VARCHAR(120),
-  s3url VARCHAR(255) NOT NULL,
-  date_uploaded DATE NOT NULL
+CREATE TABLE users (
+  id               SERIAL PRIMARY KEY,
+  image_file_id      INT REFERENCES  image_files(id),
+  author       VARCHAR(30) NOT NULL,
+  description VARCHAR(120) NOT NULL,
 );
