@@ -1,7 +1,7 @@
 CREATE TABLE users (
   id               SERIAL PRIMARY KEY,
-  author       VARCHAR(30) NOT NULL,
-  description VARCHAR(120) NOT NULL
+  username      VARCHAR(30) NOT NULL
+  
 );
 
 
@@ -12,6 +12,7 @@ CREATE TABLE image_files(
     file TEXT NOT NULL,
     mimetype  TEXT NOT NULL,
     size INT NOT NULL,
+    description VARCHAR(120) NOT NULL,
     CONSTRAINT fk_user
     FOREIGN KEY(user_id)
     REFERENCES users(id)
