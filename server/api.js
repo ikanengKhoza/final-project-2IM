@@ -83,19 +83,21 @@ router.get("/listImages", function (req, res) {
 });
 
 router.post("/upload", upload.single("image"), (req, res) => {
-	//console.log(req.file);
+	console.log("hi", req.body);
 	const path = req.file.path;
 	const filename = req.file.filename;
 	const mimetype = req.file.mimetype;
 	const size = req.file.size;
+	const user_id = req.body.user_id;
+	const description = req.body.description;
 
 	try {
 		const data = fs.readFileSync(path, { encoding: "base64" });
 		console.log(data);
 		const query =
-			"INSERT INTO image_files(filename, mimetype, size, file) VALUES ($1, $2, $3, $4)";
+			"INSERT INTO image_files(user_id, filename, mimetype, size, file, description) VALUES ($1, $2, $3, $4, $5, $6)";
 		pool
-			.query(query, [filename, mimetype, size, data])
+			.query(query, [user_id, filename, mimetype, size, data, description])
 			.then(() => res.send("image created"))
 			.catch((error) => {
 				console.log(error);
