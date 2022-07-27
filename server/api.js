@@ -47,7 +47,7 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 router.get("/", (_, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", "*");
 	res.json({ message: "world" });
 });
 
@@ -129,5 +129,6 @@ router.get(
 router.get("/auth/github/authenticationstatus", (req, res) => {
 	res.json({ isauthenticated: req.isAuthenticated() });
 });
+
 
 export default router;
