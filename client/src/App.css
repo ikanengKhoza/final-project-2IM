@@ -37,10 +37,6 @@
   letter-spacing: 0.8px;
 }
 
-.content-wrapper {
-  
-  justify-items: center;
-}
 
 .search-wrapper {
   
@@ -76,18 +72,10 @@
   color: var(--black);
 }
 
-.btn-upload {
-  background-color: var(--green);
-  color: white;
-}
 
 .btn-search {
   background-color: var(--blue-mid);
   color: white;
-}
-
-.card {
-  border: solid black 1px;
 }
 
 .img-title {
@@ -96,16 +84,13 @@
   text-align:left;
 }
 
-.card-text{
-  text-align:left;
-  font-weight: 300;
+.card {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
 }
 
 .btn:focus {
   box-shadow: 0 0 0 transparent;
 }
 
-.form-control{
-  border:solid black 1px;
-
-}
