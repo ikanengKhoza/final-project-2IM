@@ -1,12 +1,12 @@
 import React from "react";
-import Github from "../img/github.png";
-import "./Signup.css";
+import Github from "../images/github.png";
+import "../Signup.css";
 // call from client side
 const github = () => {
   window.open("http://localhost:3000/auth/github", "_self");
 };
 
-function Login() {
+function Signup() {
   return( <div className="login">
               <div className="wrapper">
                 <div className="signup"> Welcome  </div>
@@ -22,4 +22,4 @@ function Login() {
 }
 
 
-export default Login;
+export default Signup;
