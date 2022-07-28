@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "./Upload.css";
+
 function Upload() {
 	const [fileData, setFileData] = useState();
 	const [username, setUserName] = useState();
@@ -35,12 +37,12 @@ function Upload() {
 	};
 
 	return (
-		<div className="upload">
+		<div className="container">
 			<form onSubmit={onSubmitHandler}>
 				<label className="upload-select">
 					Select
-					<input type="file" onChange={fileChangeHandler} />
-				</label>
+					<input className="input-file" type="file" onChange={fileChangeHandler} />
+				</label><br></br>
 
 				<label>
 					username
@@ -49,7 +51,7 @@ function Upload() {
 						name="description"
 						onChange={(e) => setUserName(e.target.value)}
 					/>
-				</label>
+				</label><br></br>
 
 				<label>
 					Add description and location
@@ -58,7 +60,7 @@ function Upload() {
 						name="description"
 						onChange={(e) => setDescription(e.target.value)}
 					/>
-				</label>
+				</label><br></br>
 
 				<button type="submit" className="btn btn-info">
 					Upload
