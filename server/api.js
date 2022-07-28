@@ -72,7 +72,7 @@ router.get("/image/:imageId", function (req, res) {
 });
 
 router.get("/listImages", function (req, res) {
-	console.log("hi");
+
 	pool
 		.query("SELECT * FROM image_files")
 		.then((result) => res.json(result.rows.map((element) => element.id)))
