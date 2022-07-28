@@ -10,7 +10,7 @@ function Signup() {
   return( <div className="login">
               <div className="wrapper">
                 <div className="signup"> Welcome  </div>
-                <div className="signup"> SignUp to discover </div>
+                <div className="signup"> Please Signup </div>
                 <div className="loginButton github" onClick={github}>
                           <img src={Github} alt="" className="icon" />
                             Sign Up
