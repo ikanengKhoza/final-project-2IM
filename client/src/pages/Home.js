@@ -84,7 +84,7 @@ export default function App() {
                                                                 <br />
                                                                 <img
                                                                     className="logo-img"
-                                                                    src={`api/image/${imgId}`}
+                                                                    src={`/api/image/${imgId}`}
                                                                     alt="logo"
                                                                     height={"180px"}
                                                                 />
