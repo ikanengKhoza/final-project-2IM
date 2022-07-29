@@ -70,6 +70,8 @@
 		"@babel/runtime": "^7.17.0",
 		"@emotion/react": "^11.9.3",
 		"@emotion/styled": "^11.9.3",
+		"@fortawesome/fontawesome-svg-core": "^6.1.2",
+		"@material-ui/icons": "^4.11.3",
 		"@mui/icons-material": "^5.8.4",
 		"@mui/material": "^5.9.2",
 		"@mui/styled-engine-sc": "^5.8.0",

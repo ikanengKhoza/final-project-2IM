@@ -10,7 +10,7 @@ import Signup from "./components/Signup.jsx";
 
 function App(){
 
-	const user = true;
+	const user = false;
 	return (
 		<Routes>
 		<Route path="/" element={<LandingPage />} />
