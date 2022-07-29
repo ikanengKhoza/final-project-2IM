@@ -122,7 +122,7 @@ router.get(
 	passport.authenticate("github", { failureRedirect: "/login" }),
 	function (req, res) {
 		console.log(req.user);
-		res.redirect("/");
+		res.redirect("/home/this/site");
 	}
 );
 

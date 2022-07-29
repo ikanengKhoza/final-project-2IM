@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-
+import React from "react";
 
 import Home from "./pages/Home";
 import Upload from "./components/Upload.jsx";
@@ -10,7 +10,17 @@ import Signup from "./components/Signup.jsx";
 
 function App(){
 
-	const user = true;
+	const user = false;
+	// const [user, setUser] = useState;
+	// useEffect(() => {
+    //     fetch("/api/auth/github", {
+    //         mode: "cors",
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             setUser(data);
+    //         });
+    // }, []);
 	return (
 		<Routes>
 		<Route path="/" element={<LandingPage />} />
