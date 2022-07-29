@@ -58,14 +58,14 @@ function Upload() {
 					<label>
 						<input
 							type="text"
-							placeholder="username"
+							placeholder="Username"
 							name="username"
 							onChange={(e) => setUserName(e.target.value)}
 						/>
 					</label>
 
 					<label>
-						<textarea placeholder="add location and description"
+						<textarea placeholder="Add Location and Description"
 							onChange={(e) => setDescription(e.target.value)}
 						></textarea>
 					</label>

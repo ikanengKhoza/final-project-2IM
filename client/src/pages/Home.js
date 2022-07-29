@@ -86,7 +86,7 @@ export default function App() {
                                                                     className="logo-img"
                                                                     src={`/api/image/${imgId}`}
                                                                     alt="logo"
-                                                                    height={"180px"}
+                                                                    height={"250px"}
                                                                 />
                                                                 <div className="card-body">
                                                                 {/*     <p className="card-text">
