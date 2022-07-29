@@ -51,6 +51,7 @@ router.get("/", (_, res) => {
 	res.json({ message: "world" });
 });
 
+
 router.get("/image/:imageId", function (req, res) {
 	const imageId = req.params.imageId;
 	console.log(imageId);
@@ -70,6 +71,7 @@ router.get("/image/:imageId", function (req, res) {
 			res.status(500).json(error);
 		});
 });
+
 
 router.get("/listImages", function (req, res) {
 
