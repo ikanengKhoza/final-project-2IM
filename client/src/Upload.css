@@ -1,8 +1,44 @@
+
 .input-file {
     display: none;
 }
 
 .upload {
+
+    /* padding: 20px;
+    margin: 100px 100px 100px 400px; */
+    width: 400px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    
+    
+      
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.input {
+    margin: 3px;
+    margin-top: 30px;
+} 
+
+textarea {
+    margin: 3px;
+    margin-top: 30px;
+    
+} 
+
+select{
+    margin-bottom: 30px;
+}
+
+.btn {
+    margin-bottom: 30px;
+
     padding: 20px;
     margin: 100px 100px 100px 400px;
     width: 400px;
@@ -15,4 +51,5 @@ input {
 
 textarea {
     margin: 3px;
+
 }
