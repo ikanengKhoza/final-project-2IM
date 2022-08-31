@@ -110,6 +110,18 @@ router.post("/upload", upload.single("image"), (req, res) => {
 	}
 });
 
+router.delete("/image/:imageId", function (req, res) {
+	const imageId = req.params.imageId;
+
+	pool.query("DELETE FROM image_files WHERE image_id=$1", [imageId])
+	.then(() => pool.query("DELETE FROM image_files WHERE id=$1", [imageId]))
+	.then(() => res.send(`Image ${imageId} deleted!`))
+	.catch((error) => {
+		console.error(error);
+		res.status(500).json(error);
+ });
+  });
+
 // router.get("/login", function (req, res) {
 // 	// res.redirect("")
 // });

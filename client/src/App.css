@@ -87,13 +87,20 @@
   text-align:left;
 }
 
-.card {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 20px;
-}
 
 .btn:focus {
   box-shadow: 0 0 0 transparent;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  padding-top: 20px;
+ 
+}
+
+.search-box {
+  margin: 200px;
 }
 
