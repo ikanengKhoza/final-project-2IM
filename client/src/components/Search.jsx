@@ -10,9 +10,9 @@ export default function Search(props) {
 				<div className="search">
 					<FaSearch className="search-icon" />
 
-					<div className="search-row mb-3 search-input input-group">
+					<div className="search-row mb-3 search-input input-group ">
 						<input
-							className="form-control"
+							className="form-control home-page-search"
 							type="text"
 							aria-label="Text input with dropdown button"
 							placeholder="search"

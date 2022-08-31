@@ -53,16 +53,20 @@ function Upload() {
 							type="file"
 							onChange={fileChangeHandler}
 						/>
-					</label><br></br>
 
+					</label>
+                      <br></br>
 					<label>
 						<input
+
 							type="text"
 							placeholder="Username"
 							name="username"
 							onChange={(e) => setUserName(e.target.value)}
 						/>
 					</label>
+					<br></br>
+				
 
 					<label>
 						<textarea placeholder="Add Location and Description"
