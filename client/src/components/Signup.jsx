@@ -3,7 +3,7 @@ import Github from "../images/github.png";
 import "../Signup.css";
 // call from client side
 const github = () => {
-  window.open("/api/auth/github", "_self");
+  window.open("http://localhost:3000/api/auth/github", "_self");
 };
 
 function Signup() {

@@ -11,7 +11,7 @@ const router = Router();
 
 const GITHUB_CLIENT_ID = "979bf3578c79fbc73e1e";
 
-const CLIENT_URL = "/api/auth/github/callback";
+const CLIENT_URL = "http://localhost:3000/api/auth/github/callback";
 
 const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
