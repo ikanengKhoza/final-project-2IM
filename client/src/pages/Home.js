@@ -5,10 +5,11 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "../App.css";
 import Search from "../components/Search.jsx";
 import Navbar from "../components/Navbar.jsx";
+
 export default function App() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [images, setImages] = useState([]);
@@ -23,6 +24,16 @@ export default function App() {
 				setImages(data);
 			});
 	}, []);
+
+	//delete video
+	const deleteImage = (id) => (e) => {
+		e.preventDefault();
+		fetch(`/api/image/${id}`).then(() => {
+			const output = images.filter((element) => element.id !== id);
+			alert("are sure you want to delete this image?");
+			setImages(output);
+		});
+	};
 
 	//______________________search____________________
 	function handleSearch(event) {
@@ -48,7 +59,9 @@ export default function App() {
 								.map((imgId) => {
 									return (
 										<ImageListItem key={imgId} cols={2}>
-									<ListSubheader component="div">{imgId.description}</ListSubheader>
+											<ListSubheader component="div">
+												{imgId.description}
+											</ListSubheader>
 											<img
 												className="logo-img"
 												src={`/api/image/${imgId} ?w=248&fit=crop&auto=format`}
@@ -61,10 +74,11 @@ export default function App() {
 												subtitle={imgId.author}
 												actionIcon={
 													<IconButton
-														sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+														sx={{ color: "rgba(85, 255, 255, 0.54)" }}
 														aria-label={`info about ${imgId.title}`}
 													>
-														<InfoIcon />
+
+														<DeleteIcon color="secondary" />
 													</IconButton>
 												}
 											/>

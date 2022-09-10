@@ -113,7 +113,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
 router.delete("/image/:imageId", function (req, res) {
 	const imageId = req.params.imageId;
 
-	pool.query("DELETE FROM image_files WHERE image_id=$1", [imageId])
+	pool.query("DELETE FROM image_files WHERE user_id=$1", [imageId])
 	.then(() => pool.query("DELETE FROM image_files WHERE id=$1", [imageId]))
 	.then(() => res.send(`Image ${imageId} deleted!`))
 	.catch((error) => {
@@ -122,9 +122,6 @@ router.delete("/image/:imageId", function (req, res) {
  });
   });
 
-// router.get("/login", function (req, res) {
-// 	// res.redirect("")
-// });
 
 router.get(
 	"/auth/github",
